@@ -37,18 +37,18 @@ class Conta {
     }
 
     public function depositar($deposito) {
-        if ($this->status == true) {
+        if ($this->getStatus() == true) {
             $this->setSaldo($this->getSaldo() + $deposito);
             print "Depósito realizado!";
         }
         else {
-            print "Não é possível realizar transações de uma conta inexistente.";
+            print "Não é possível realizar transações em uma conta inexistente.";
         }
     }
 
     public function sacar($saque) {
 
-        if ($this->getSaldo() >= $saque && $this->status == true) {
+        if ($this->getSaldo() >= $saque && $this->getStatus() == true) {
             $this->setSaldo($this->getSaldo() - $saque);
             return print "Está aqui seu dinheiro R$ {$saque}";
         }
@@ -58,17 +58,14 @@ class Conta {
     }
 
     public function pagarMensal() {
-        var_dump($this->tipo);
-        if ($this->tipo == "CC") {
+        if ($this->getTipo() == "CC") {
             $this->setSaldo($this->getSaldo() - 12);
         }
-
-        elseif ($this->tipo == "CP") {
+        elseif ($this->getTipo() == "CP") {
             $this->setSaldo($this->getSaldo() - 20);
         }
-
-    }
-
+        
+    }   
 
     // ABAIXO SÃO OS GETTERS E OS SETTERS
 

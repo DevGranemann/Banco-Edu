@@ -16,7 +16,9 @@
             $conta1->abrirConta("CC");
 
             $conta1->depositar(100);
+            
             $conta1->pagarMensal();
+
 
             print "<br><br>";
 
