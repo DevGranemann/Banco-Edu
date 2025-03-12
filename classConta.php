@@ -26,8 +26,7 @@ class Conta {
     }
 
     public function fecharConta() {
-        $saldo = $this->getSaldo();
-        if ($saldo == 0) {
+        if ($this->getSaldo() == 0) {
             $this->setStatus(false);
             print "Conta fechada com sucesso.";
         }
@@ -58,11 +57,14 @@ class Conta {
     }
 
     public function pagarMensal() {
-        if ($this->getTipo() == "CC") {
+        if ($this->getTipo() == "CC" && $this->getStatus() == true) {
             $this->setSaldo($this->getSaldo() - 12);
         }
         elseif ($this->getTipo() == "CP") {
             $this->setSaldo($this->getSaldo() - 20);
+        }
+        else {
+            print "A conta não existe.";
         }
         
     }   
