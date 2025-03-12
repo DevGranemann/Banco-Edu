@@ -8,9 +8,9 @@ class Conta {
     private $saldo;
     private $status;
 
-    public function __construct($status = false, $saldo = 0) {
-        $this->setStatus($status);
-        $this->setSaldo($saldo);
+    public function __construct() {
+        $this->setStatus(false);
+        $this->setSaldo(0);
     }
     
     public function abrirConta($tipo) {
@@ -60,7 +60,7 @@ class Conta {
         if ($this->getTipo() == "CC" && $this->getStatus() == true) {
             $this->setSaldo($this->getSaldo() - 12);
         }
-        elseif ($this->getTipo() == "CP") {
+        elseif ($this->getTipo() == "CP" && $this->getStatus() == true) {
             $this->setSaldo($this->getSaldo() - 20);
         }
         else {
